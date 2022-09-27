@@ -97,9 +97,6 @@
   <ItemGroup>
     <Folder Include="API\" />
     <Folder Include="Assets\" />
-    <Folder Include="ModelView\" />
-    <Folder Include="Model\" />
-    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

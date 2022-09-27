@@ -23,6 +23,12 @@ namespace WeatherApp_Gerlach
         public MainWindow()
         {
             InitializeComponent();
+
+
+
+            //b6ee3ba5f78bd0c33c1bf67c46c95709
+            //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}
+
         }
     }
 }
