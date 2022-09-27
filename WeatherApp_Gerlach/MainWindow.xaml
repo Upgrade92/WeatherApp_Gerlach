@@ -5,24 +5,173 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherApp_Gerlach"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="45"/>
-            <ColumnDefinition Width="800"/>
-            <ColumnDefinition Width="25"/>
-        </Grid.ColumnDefinitions>
+        Title="MainWindow" 
+        Height="600" 
+        Width="900"
+		Background="Transparent"
+        AllowsTransparency="True"
+		WindowStyle="none"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+		>
+    <Border CornerRadius="30">
+        <Border.Background>
+            <ImageBrush x:Name="image" ImageSource="/Assets/sun.png"
+							></ImageBrush>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="400"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock  x:Name="textblockTemp" Grid.Column="1" HorizontalAlignment="Left" Margin="356,67,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="291" Width="299"/>
-        <TextBox x:Name="textboxCity" Grid.Column="1" HorizontalAlignment="Left" Margin="376,29,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="buttonSubmit" Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="591,32,0,0" Grid.Row="2" VerticalAlignment="Top" Click="buttonSubmit_Click"/>
+        </Border.Background>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
 
-    </Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="400"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel
+				Orientation="Horizontal"
+					x:Name="ButtonPanel"
+					Grid.Row="1"
+					Grid.Column="2"
+				HorizontalAlignment="Right"
+					>
+                <Button x:Name="btn_minmize"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+					Margin="0,0,20,0"
+                    BorderThickness="0"
+                    Content="-"
+                    Foreground="White"
+                    FontSize="16"
+                    FontFamily="Montserrat"
+                    Cursor="Hand"
+                    Click="btn_minmize_Click"
+                    
+                    
+                    >
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#28AEED"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#278BEF"/>
+
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="18" Height="18"
+										CornerRadius="9"
+										Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+													  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+                <Button x:Name="btn_close"
+							Margin="0,0,0,0"
+							BorderThickness="0"
+							Content="x"
+							Foreground="White"
+							FontSize="16"
+							FontFamily="Montserrat"
+							Cursor="Hand"
+                            Click="btn_close_Click"
+						
+							
+							
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+                    
+                    >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#DA34AE"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#C62DAE"/>
+
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+										CornerRadius="9"
+										Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+													  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+            </StackPanel>
+
+            <TextBlock  x:Name="textblockTemp" Grid.Column="2" Foreground="White" HorizontalAlignment="Center" Margin="0,100,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="300" Width="400"/>
+            <TextBox x:Name="textboxCity" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2" KeyDown="textboxCity_KeyDown"
+					 
+					 
+					 />
+
+            <Button x:Name="buttonSubmit"
+                    Grid.Column="1"
+					Grid.Row="3"
+					Grid.ColumnSpan="2"
+                    BorderThickness="2"
+                    Foreground="White"
+                    FontSize="18"
+                    FontFamily="Montserrat"
+                    Cursor="Hand"
+					Click="buttonSubmit_Click"
+                    Opacity="1"
+                    Content="Aktualisieren"
+                    
+                    
+                    
+                    
+                    >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="DarkOliveGreen"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Gold"/>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="150" Height="40"
+						CornerRadius="20"
+						Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+									  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+            <TextBlock x:Name="textBlockTest" Foreground="White" Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="19" Width="158" Grid.Row="1"/>
+
+
+
+        </Grid>
+    </Border>
+
 </Window>
