@@ -17,8 +17,7 @@ using System.Windows.Shapes;
 using WeatherApp_Gerlach.WeatherMap;
 using static System.Net.WebRequestMethods;
 using Newtonsoft.Json;
-
-
+using WeatherApp_Gerlach.SupportClasses;
 
 namespace WeatherApp_Gerlach
 {
@@ -29,36 +28,18 @@ namespace WeatherApp_Gerlach
     {
         public MainWindow()
         {
-
-
             InitializeComponent();
-
             
-
-//https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}
+            //https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}
             //b6ee3ba5f78bd0c33c1bf67c46c95709
-
-
-            HttpClient httpClient = new HttpClient();
-            string cityName = "Graz";
-            string requestUri = $"https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid=b6ee3ba5f78bd0c33c1bf67c46c95709&lang=de&units=metric";
-
-            HttpResponseMessage httpResponse = httpClient.GetAsync(requestUri).Result;
-
-            string response = httpResponse.Content.ReadAsStringAsync().Result;
-            WeatherMapResponse weatherMapResponse = JsonConvert.DeserializeObject<WeatherMapResponse>(response);
-
-            textblock.Text = weatherMapResponse.main.feels_like.ToString() + " °C";
-=======
-
-
-
-            //b6ee3ba5f78bd0c33c1bf67c46c95709
-            //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}
+     
+            textboxCity.Text = "Fohnsdorf";
+      
         }
 
-        
- 
-        
+        private void buttonSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            textblockTemp.Text = Helper.doRequest(textboxCity).ToString();
+        }
     }
 }
