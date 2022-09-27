@@ -58,8 +58,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="API\Clouds.cs" />
+    <Compile Include="API\Coord.cs" />
     <Compile Include="API\Main.cs" />
+    <Compile Include="API\Weather.cs" />
     <Compile Include="API\WeatherMapResponse.cs" />
+    <Compile Include="API\Wind.cs" />
     <Compile Include="SupportClasses\Helper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
