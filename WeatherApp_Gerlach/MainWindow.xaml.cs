@@ -32,8 +32,10 @@ namespace WeatherApp_Gerlach
 
 
             InitializeComponent();
+
             
-            //https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}
+
+//https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}
             //b6ee3ba5f78bd0c33c1bf67c46c95709
 
 
@@ -47,11 +49,16 @@ namespace WeatherApp_Gerlach
             WeatherMapResponse weatherMapResponse = JsonConvert.DeserializeObject<WeatherMapResponse>(response);
 
             textblock.Text = weatherMapResponse.main.feels_like.ToString() + " °C";
+=======
 
+
+
+            //b6ee3ba5f78bd0c33c1bf67c46c95709
+            //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}
         }
 
         
-
+ 
         
     }
 }
