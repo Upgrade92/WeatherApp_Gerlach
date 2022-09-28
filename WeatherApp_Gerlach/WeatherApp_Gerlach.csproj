@@ -105,7 +105,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\rain.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\cloud.png" />
     <Resource Include="Assets\logo.png" />
@@ -113,6 +115,14 @@
     <Resource Include="Assets\sun.png" />
     <Resource Include="Assets\thunderstorm.png" />
     <Resource Include="Assets\verticalBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Horizontal_Bar.png" />
+    <Resource Include="Assets\moon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\fog.png" />
+    <Resource Include="Assets\startup.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
