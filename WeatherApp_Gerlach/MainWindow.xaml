@@ -13,12 +13,13 @@
 		WindowStyle="none"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        MouseDown="Window_MouseDown"
-		>
+        MouseDown="Window_MouseDown">
     <Border CornerRadius="30">
         <Border.Background>
-            <ImageBrush x:Name="image" ImageSource="/Assets/sun.png"
-							></ImageBrush>
+            <ImageBrush 
+                x:Name="image" 
+                ImageSource="/Assets/sun.png">                
+            </ImageBrush>
 
         </Border.Background>
         <Grid>
@@ -36,6 +37,71 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <Border  x:Name="top_bar_border"
+                     CornerRadius="30"
+                    Width="900"
+                   Height="100"
+                   Grid.Row="3"
+                   Grid.RowSpan="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   Margin="0,20,0,0"
+                    >
+                <Border.Background>
+                
+                    <ImageBrush
+                        x:Name="top_bar_bg"
+                        ImageSource="/Assets/Horizontal_Bar.png">                        
+                    </ImageBrush>
+                
+                </Border.Background>
+            </Border>
+            <Border x:Name="bottom_bar_border"
+                    CornerRadius="30"
+                    Width="900"
+                   Height="100"
+                   Grid.Row="3"
+                   Grid.RowSpan="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   Margin="0,20,0,0"
+                   
+                    >
+                <Border.Background>
+                <ImageBrush 
+                        x:Name="bottom_bar_bg" 
+                        ImageSource="/Assets/Horizontal_Bar.png">
+                </ImageBrush>
+                </Border.Background>
+            </Border>
+            <Label x:Name="left_bar"
+                   Width="50"
+                   Height="480"
+                   Grid.Row="2"
+                   Grid.RowSpan="2"
+                   Grid.Column="0" >
+                <Label.Background >
+                    <ImageBrush 
+                        x:Name="left_bar_bg" 
+                        ImageSource="/Assets/verticalBar.png">                        
+                    </ImageBrush>
+                </Label.Background>
+            </Label>
+            <Label x:Name="right_bar"
+                   Width="50"
+                   Height="480"
+                   Grid.Row="2"
+                   Grid.RowSpan="2"
+                   Grid.Column="3"                                    
+                   >
+                <Label.Background >
+                    <ImageBrush 
+                        x:Name="right_bar_bg" 
+                        ImageSource="/Assets/verticalBar.png">                        
+                    </ImageBrush>
+                </Label.Background>
+            </Label>
+
             <StackPanel
 				Orientation="Horizontal"
 					x:Name="ButtonPanel"
@@ -53,32 +119,27 @@
                     FontSize="16"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Click="btn_minmize_Click"
-                    
-                    
-                    >
+                    Click="btn_minmize_Click">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#28AEED"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#278BEF"/>
-
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Width="18" Height="18"
+                            <Border     Width="18" Height="18"
 										CornerRadius="9"
 										Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center"
-													  HorizontalAlignment="Center"/>
+                                <ContentPresenter   VerticalAlignment="Center"
+											        HorizontalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
-
                 </Button>
                 <Button x:Name="btn_close"
 							Margin="0,0,0,0"
@@ -89,13 +150,8 @@
 							FontFamily="Montserrat"
 							Cursor="Hand"
                             Click="btn_close_Click"
-						
-							
-							
-						VerticalAlignment="Center"
-						HorizontalAlignment="Center"
-                    
-                    >
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#DA34AE"/>
@@ -118,15 +174,37 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-
             </StackPanel>
-
-            <TextBlock  x:Name="textblockTemp" Grid.Column="2" Foreground="White" HorizontalAlignment="Center" Margin="0,100,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="300" Width="400"/>
-            <TextBox x:Name="textboxCity" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2" KeyDown="textboxCity_KeyDown"
-					 
-					 
-					 />
-
+            <TextBlock  
+                x:Name="textblockTemp" 
+                Grid.Column="2" 
+                Foreground="White" 
+                HorizontalAlignment="Left" 
+                Margin="58,95,0,0" 
+                Grid.Row="2" 
+                TextWrapping="Wrap" 
+                Text="TextBlock" 
+                VerticalAlignment="Top" 
+                Height="300" Width="332"/>
+            <TextBox 
+                Foreground="White"
+                x:Name="textboxCity" 
+                Grid.Column="1" 
+                HorizontalAlignment="Center"  
+                Grid.Row="1" 
+                TextWrapping="Wrap" 
+                Text="TextBox" 
+                VerticalAlignment="Center" 
+                Width="120" 
+                Grid.ColumnSpan="2" 
+                KeyDown="textboxCity_KeyDown"
+                TextAlignment="Center"
+                >
+                <TextBox.Background>
+                    <ImageBrush x:Name="input"
+                                ImageSource="/Assets/Horizontal_Bar.png"></ImageBrush>
+                </TextBox.Background>
+            </TextBox>
             <Button x:Name="buttonSubmit"
                     Grid.Column="1"
 					Grid.Row="3"
@@ -139,10 +217,8 @@
 					Click="buttonSubmit_Click"
                     Opacity="1"
                     Content="Aktualisieren"
-                    
-                    
-                    
-                    
+                    VerticalAlignment="Center"
+                    Margin="0,40,0,0"
                     >
                 <Button.Style>
                     <Style TargetType="Button">
@@ -150,7 +226,6 @@
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="Gold"/>
-
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -160,18 +235,33 @@
                         <Border Width="150" Height="40"
 						CornerRadius="20"
 						Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
-									  HorizontalAlignment="Center"/>
+                            <ContentPresenter   VerticalAlignment="Center"
+									            HorizontalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
 
             </Button>
-            <TextBlock x:Name="textBlockTest" Foreground="White" Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="19" Width="158" Grid.Row="1"/>
+            <TextBlock 
+                x:Name="textBlockTest" 
+                Foreground="White" 
+                Grid.Column="2" 
+                HorizontalAlignment="Center" 
+                TextWrapping="Wrap" 
+                Text="TextBlock" 
+                VerticalAlignment="Center" 
+                Height="19" 
+                Width="158" 
+                Grid.Row="1"
+                TextAlignment="Center"
+                >
+                <TextBlock.Background>
+                    <ImageBrush x:Name="weather_now"
+                                ImageSource="/Assets/Horizontal_Bar.png"></ImageBrush>
+                </TextBlock.Background>
 
-
-
+            </TextBlock>
+            
         </Grid>
     </Border>
-
 </Window>

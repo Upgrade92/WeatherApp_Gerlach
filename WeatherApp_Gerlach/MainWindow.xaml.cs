@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using WeatherApp_Gerlach.SupportClasses;
 
 namespace WeatherApp_Gerlach
@@ -9,18 +12,17 @@ namespace WeatherApp_Gerlach
     /// </summary>
     public partial class MainWindow : Window
     {
-       
         public MainWindow()
         {
             InitializeComponent();
             
             //https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}
-            //b6ee3ba5f78bd0c33c1bf67c46c95709
+            //b6ee3ba5f78bd0c33c1bf67c46c95709  API key
      
-            textboxCity.Text = "Graz";
+            textboxCity.Text = "";
+            textBlockTest.Text = "";
             textblockTemp.Text = "";
-            //image.ImageSource = new BitmapImage(new Uri("..\\..\\Assets\\logo.png", UriKind.RelativeOrAbsolute));
-      
+            image.ImageSource = new BitmapImage(new Uri("..\\..\\Assets\\startup.png", UriKind.RelativeOrAbsolute));    
         }
 
         private void buttonSubmit_Click(object sender, RoutedEventArgs e)
@@ -58,15 +60,18 @@ namespace WeatherApp_Gerlach
         {
             if (Helper.IsAlphabets(textboxCity.Text))
             {
-                textblockTemp.Text = Helper.printWeatherData(Helper.doRequest(textboxCity)).ToString();
-                //string weatherDesc = textblockTemp.Text.ToString().Split(' ')[193] + textblockTemp.Text.ToString().Split(' ')[194];
-                //string actualTemp = textblockTemp.Text.ToString().Split(' ')[14];
-
+                textblockTemp.Text = Helper.printWeatherData(Helper.doRequest(textboxCity),this).ToString();
                 image.ImageSource = Helper.switchImage();
+
+                if (Helper.doRequest(textboxCity) != null)
+                {
+                    textBlockTest.Text = Helper.ActualTemp;
+                }               
             }
             else
             {
                 MessageBox.Show("Nur Buchstaben erlaubt", "Fehler");
+                //image.ImageSource = new BitmapImage(new Uri("..\\..\\Assets\\startup.png", UriKind.RelativeOrAbsolute));
             }
         }
 
