@@ -58,8 +58,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="API\Clouds.cs" />
-    <Compile Include="API\Coord.cs" />
     <Compile Include="API\Main.cs" />
     <Compile Include="API\Weather.cs" />
     <Compile Include="API\WeatherMapResponse.cs" />
@@ -115,10 +113,8 @@
     <Resource Include="Assets\snow.png" />
     <Resource Include="Assets\sun.png" />
     <Resource Include="Assets\thunderstorm.png" />
-    <Resource Include="Assets\verticalBar.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Horizontal_Bar.png" />
     <Resource Include="Assets\moon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +130,8 @@
   <ItemGroup>
     <Resource Include="Assets\logo2.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\Horizontal_Bar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

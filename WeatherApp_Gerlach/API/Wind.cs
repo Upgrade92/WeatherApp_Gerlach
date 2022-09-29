@@ -2,8 +2,8 @@
 {
     public class Wind
     {
-        public float speed;
-        public int deg;
-        public float gust;
+        public float speed;             // Windgeschwindigkeit
+        public int deg;                 // Windrichtung
+        public float gust;              // Einheit
     }
 }

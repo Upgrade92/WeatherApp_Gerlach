@@ -14,17 +14,14 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown">
+    
     <Border x:Name= "backg"
-            CornerRadius="30"
-            >
-        <Border.Background>
+            CornerRadius="30">
 
-            <ImageBrush 
-                
+        <Border.Background>
+            <ImageBrush
                 x:Name="image" 
-                ImageSource="/Assets/sun.png"
-                
-                >
+                ImageSource="/Assets/sun.png">
             </ImageBrush>
 
         </Border.Background>
@@ -52,9 +49,6 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-
-
-
                 <Button x:Name="LogoLabel"
                        Grid.Column="0"
                        Grid.Row="1"
@@ -66,13 +60,12 @@
                        VerticalAlignment="Top"
                        Margin="50,15,0,0"
                        Click="LogoLabel_Click"
-                       BorderThickness="0"
-                        
-                           >
+                       BorderThickness="0">
                     <Button.Background>
                         <ImageBrush ImageSource="/Assets/logo2.png"></ImageBrush>
                     </Button.Background>
                 </Button>
+                
                 <StackPanel
 				Orientation="Horizontal"
 					x:Name="ButtonPanel"
@@ -113,6 +106,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
+                    
                     <Button x:Name="btn_close"
 							Margin="0,0,0,0"
 							BorderThickness="0"
@@ -148,6 +142,7 @@
                         </Button.Template>
                     </Button>
                 </StackPanel>
+                
                 <TextBlock  
                 x:Name="tbBig" 
                 Grid.Column="2" 
@@ -161,6 +156,7 @@
                 VerticalAlignment="Top" 
                 Height="100" Width="300"
                 TextAlignment="Right"/>
+                
                 <TextBlock  
                 x:Name="textblockTemp" 
                 Grid.Column="2" 
@@ -169,10 +165,10 @@
                 Margin="108,155,0,0" 
                 Grid.Row="2" 
                 TextWrapping="Wrap" 
-                Text="TextBlock" 
+                Text="" 
                 VerticalAlignment="Top" 
-                Height="280" Width="300"
-                    />
+                Height="280" Width="300"/>
+                
                 <TextBox
                 CaretBrush="Wheat"
                 Foreground="White"
@@ -181,7 +177,7 @@
                 HorizontalAlignment="Center"  
                 Grid.Row="1" 
                 TextWrapping="Wrap" 
-                Text="TextBox" 
+                Text="" 
                 VerticalAlignment="Center" 
                 Width="180" 
                     Height="35"
@@ -189,15 +185,14 @@
                 Grid.ColumnSpan="2" 
                 KeyDown="textboxCity_KeyDown"
                 TextAlignment="Center"
-                    BorderThickness="0"
-                >
+                    BorderThickness="0">
                     
-                    <TextBox.Background>
-                        
+                    <TextBox.Background>                        
                         <ImageBrush x:Name="input"
                                 ImageSource="/Assets/Horizontal_Bar.png"></ImageBrush>
                     </TextBox.Background>
                 </TextBox>
+                
                 <Button x:Name="buttonSubmit"
                     Grid.Column="1"
 					Grid.Row="3"
@@ -212,9 +207,7 @@
                     Opacity="1"
                     Content="Aktualisieren"
                     VerticalAlignment="Center"
-                    Margin="0,34,0,0"
-                       
-                    >
+                    Margin="0,34,0,0">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Gold"/>
@@ -239,21 +232,18 @@
 
                 </Button>
                 <TextBlock 
-                x:Name="textBlockTest" 
+                x:Name="textBlockDesc" 
                 Foreground="White" 
                 Grid.Column="2" 
                 HorizontalAlignment="Right" 
                 TextWrapping="Wrap" 
-                Text="TextBlock" 
+                Text="" 
                 VerticalAlignment="Center" 
                 Height="19" 
                 Width="158"
                 Margin="0,0,20,250"
                 Grid.Row="2"
-                TextAlignment="Right"
-                >
-
-
+                TextAlignment="Right">
                 </TextBlock>
 
             </Grid>

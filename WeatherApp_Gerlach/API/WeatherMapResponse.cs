@@ -7,8 +7,6 @@ namespace WeatherApp_Gerlach.WeatherMap
         public Main main;
         public Weather[] weather;
         public Wind wind;
-        //public Clouds clouds;
-
         public string name;
     }
 }

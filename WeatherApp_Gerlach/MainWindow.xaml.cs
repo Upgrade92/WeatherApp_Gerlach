@@ -15,11 +15,9 @@ namespace WeatherApp_Gerlach
         {
             InitializeComponent();
             textboxCity.Focus();
-            //https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}
-            //b6ee3ba5f78bd0c33c1bf67c46c95709  API key
             LogoLabel.Visibility = Visibility.Collapsed;
             textboxCity.Text = "";
-            textBlockTest.Text = "";
+            textBlockDesc.Text = "";
             textblockTemp.Text = "";
             image.ImageSource = new BitmapImage(new Uri("..\\..\\Assets\\startup.png", UriKind.RelativeOrAbsolute));    
         }
@@ -27,8 +25,7 @@ namespace WeatherApp_Gerlach
         private void buttonSubmit_Click(object sender, RoutedEventArgs e)
         {
             getWeather();
-        }
-        
+        }       
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -66,7 +63,7 @@ namespace WeatherApp_Gerlach
                 if (HttpHelper.doRequest(textboxCity) != null)
                 {
                     tbBig.Text = Helper.ActualTemp;
-                    textBlockTest.Text = Helper.WeatherDesc;
+                    textBlockDesc.Text = Helper.WeatherDesc;
                 }               
             }
             else
@@ -74,8 +71,7 @@ namespace WeatherApp_Gerlach
                 MessageBox.Show("Nur Buchstaben erlaubt", "Fehler");
                 //image.ImageSource = new BitmapImage(new Uri("..\\..\\Assets\\startup.png", UriKind.RelativeOrAbsolute));
             }
-            textboxCity.Text = "";
-            
+            textboxCity.Text = "";            
         }
 
         private void LogoLabel_Click(object sender, RoutedEventArgs e)

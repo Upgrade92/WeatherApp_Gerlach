@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using WeatherApp_Gerlach.WeatherMap;
 
-
 namespace WeatherApp_Gerlach.SupportClasses
 {
     public class Helper
@@ -12,11 +11,10 @@ namespace WeatherApp_Gerlach.SupportClasses
         private static string weather;
 
         private static string weatherDesc;
-
         public static string WeatherDesc { get { return weatherDesc; } }
+
         private static string actualTemp;
         public static string ActualTemp { get { return actualTemp; }  }
-
 
         public static StringBuilder printWeatherData(WeatherMapResponse weatherMapResponse, MainWindow main)
         {
@@ -26,7 +24,6 @@ namespace WeatherApp_Gerlach.SupportClasses
             actualTemp = ""; 
             if ((weatherMapResponse != null) && (weatherMapResponse.main != null))
             {
-                //sb.Append($"{"Aktuelle Temperatur",-30} :\t {weatherMapResponse.main.temp.ToString("00.00")}  °C\n");
                 sb.Append($"{"Höchsttemperatur",-30} :\t {weatherMapResponse.main.temp_max.ToString("00.00")}  °C\n");
                 sb.Append($"{"Mindesttemperatur",-30}:\t {weatherMapResponse.main.temp_min.ToString("00.00")}  °C\n");
                 sb.Append($"{"Gefühlte Temperatur",-30}:\t {weatherMapResponse.main.feels_like.ToString("00.00")}  °C\n\n");
@@ -35,7 +32,7 @@ namespace WeatherApp_Gerlach.SupportClasses
                 sb.Append($"{"Windgeschwindigkeit",-28}:\t {weatherMapResponse.wind.speed.ToString()} m/s\n\n");
                 sb.Append($"{"Ortschaft",-38}:\t {weatherMapResponse.name.ToString()} \n");
                 sb.Append($"{"Wetterlage",-36}:\t {Helper.translateWeather(weatherMapResponse.weather[0].main.ToString())} \n");
-                //sb.Append($"{"Beschreibung",-34}:\t {weatherMapResponse.weather[0].description.ToString()} \n");
+
                 main.LogoLabel.Visibility = Visibility.Visible;
                 actualTemp = weatherMapResponse.main.temp.ToString("00.00") + " °C";
                 weatherDesc = weatherMapResponse.weather[0].description.ToString();

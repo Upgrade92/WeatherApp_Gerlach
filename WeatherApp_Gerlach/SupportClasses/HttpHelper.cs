@@ -5,6 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using WeatherApp_Gerlach.WeatherMap;
 
+//https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}     API Uri
+//b6ee3ba5f78bd0c33c1bf67c46c95709                                                                          API key
+
 namespace WeatherApp_Gerlach.SupportClasses
 {
     public class HttpHelper
