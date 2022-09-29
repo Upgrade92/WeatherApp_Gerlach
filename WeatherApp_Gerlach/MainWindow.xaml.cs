@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using WeatherApp_Gerlach.SupportClasses;
 
@@ -15,10 +14,10 @@ namespace WeatherApp_Gerlach
         public MainWindow()
         {
             InitializeComponent();
-            
+            textboxCity.Focus();
             //https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={b6ee3ba5f78bd0c33c1bf67c46c95709}
             //b6ee3ba5f78bd0c33c1bf67c46c95709  API key
-     
+            LogoLabel.Visibility = Visibility.Collapsed;
             textboxCity.Text = "";
             textBlockTest.Text = "";
             textblockTemp.Text = "";
@@ -29,6 +28,7 @@ namespace WeatherApp_Gerlach
         {
             getWeather();
         }
+        
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -60,12 +60,13 @@ namespace WeatherApp_Gerlach
         {
             if (Helper.IsAlphabets(textboxCity.Text))
             {
-                textblockTemp.Text = Helper.printWeatherData(Helper.doRequest(textboxCity),this).ToString();
+                textblockTemp.Text = Helper.printWeatherData(HttpHelper.doRequest(textboxCity),this).ToString();
                 image.ImageSource = Helper.switchImage();
 
-                if (Helper.doRequest(textboxCity) != null)
+                if (HttpHelper.doRequest(textboxCity) != null)
                 {
-                    textBlockTest.Text = Helper.ActualTemp;
+                    tbBig.Text = Helper.ActualTemp;
+                    textBlockTest.Text = Helper.WeatherDesc;
                 }               
             }
             else
@@ -73,7 +74,16 @@ namespace WeatherApp_Gerlach
                 MessageBox.Show("Nur Buchstaben erlaubt", "Fehler");
                 //image.ImageSource = new BitmapImage(new Uri("..\\..\\Assets\\startup.png", UriKind.RelativeOrAbsolute));
             }
+            textboxCity.Text = "";
+            
         }
 
+        private void LogoLabel_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow reset = new MainWindow();
+            reset.Show();
+            this.Close();
+            
+        }
     }
 }

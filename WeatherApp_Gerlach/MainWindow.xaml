@@ -14,179 +14,167 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown">
-    <Border CornerRadius="30">
+    <Border x:Name= "backg"
+            CornerRadius="30"
+            >
         <Border.Background>
+
             <ImageBrush 
+                
                 x:Name="image" 
-                ImageSource="/Assets/sun.png">                
+                ImageSource="/Assets/sun.png"
+                
+                >
             </ImageBrush>
 
         </Border.Background>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="400"/>
-                <ColumnDefinition Width="400"/>
-                <ColumnDefinition Width="50"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="400"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Border  x:Name="top_bar_border"
-                     CornerRadius="30"
-                    Width="900"
-                   Height="100"
-                   Grid.Row="3"
-                   Grid.RowSpan="2"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="4"
-                   Margin="0,20,0,0"
-                    >
-                <Border.Background>
-                
-                    <ImageBrush
-                        x:Name="top_bar_bg"
-                        ImageSource="/Assets/Horizontal_Bar.png">                        
-                    </ImageBrush>
-                
-                </Border.Background>
-            </Border>
-            <Border x:Name="bottom_bar_border"
-                    CornerRadius="30"
-                    Width="900"
-                   Height="100"
-                   Grid.Row="3"
-                   Grid.RowSpan="2"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="4"
-                   Margin="0,20,0,0"
-                   
-                    >
-                <Border.Background>
+        <Border CornerRadius="30">
+            <Border.Background>
                 <ImageBrush 
-                        x:Name="bottom_bar_bg" 
-                        ImageSource="/Assets/Horizontal_Bar.png">
+                x:Name="frame" 
+                ImageSource="/Assets/frame.png">
                 </ImageBrush>
-                </Border.Background>
-            </Border>
-            <Label x:Name="left_bar"
-                   Width="50"
-                   Height="480"
-                   Grid.Row="2"
-                   Grid.RowSpan="2"
-                   Grid.Column="0" >
-                <Label.Background >
-                    <ImageBrush 
-                        x:Name="left_bar_bg" 
-                        ImageSource="/Assets/verticalBar.png">                        
-                    </ImageBrush>
-                </Label.Background>
-            </Label>
-            <Label x:Name="right_bar"
-                   Width="50"
-                   Height="480"
-                   Grid.Row="2"
-                   Grid.RowSpan="2"
-                   Grid.Column="3"                                    
-                   >
-                <Label.Background >
-                    <ImageBrush 
-                        x:Name="right_bar_bg" 
-                        ImageSource="/Assets/verticalBar.png">                        
-                    </ImageBrush>
-                </Label.Background>
-            </Label>
 
-            <StackPanel
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="400"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+
+
+                <Button x:Name="LogoLabel"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       Grid.RowSpan="2"
+                       Grid.ColumnSpan="2"
+                       Height="70"
+                       Width="90"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="50,15,0,0"
+                       Click="LogoLabel_Click"
+                       BorderThickness="0"
+                        
+                           >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Assets/logo2.png"></ImageBrush>
+                    </Button.Background>
+                </Button>
+                <StackPanel
 				Orientation="Horizontal"
 					x:Name="ButtonPanel"
 					Grid.Row="1"
 					Grid.Column="2"
 				HorizontalAlignment="Right"
 					>
-                <Button x:Name="btn_minmize"
+                    
+                    <Button x:Name="btn_minmize"
 						VerticalAlignment="Center"
 						HorizontalAlignment="Center"
 					Margin="0,0,20,0"
                     BorderThickness="0"
                     Content="-"
                     Foreground="White"
-                    FontSize="16"
+                    FontSize="20"
                     FontFamily="Montserrat"
                     Cursor="Hand"
                     Click="btn_minmize_Click">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#28AEED"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#278BEF"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border     Width="18" Height="18"
-										CornerRadius="9"
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="DarkBlue"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border     Width="25" Height="25"
+										CornerRadius="12.5"
 										Background="{TemplateBinding Background}">
-                                <ContentPresenter   VerticalAlignment="Center"
+                                    <ContentPresenter   VerticalAlignment="Center"
 											        HorizontalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button x:Name="btn_close"
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="btn_close"
 							Margin="0,0,0,0"
 							BorderThickness="0"
 							Content="x"
 							Foreground="White"
-							FontSize="16"
+							FontSize="20"
 							FontFamily="Montserrat"
 							Cursor="Hand"
                             Click="btn_close_Click"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Center">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="#DA34AE"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#C62DAE"/>
+                            HorizontalAlignment="Center"
+                            >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="DarkRed"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#DA34AE"/>
 
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Width="18" Height="18"
-										CornerRadius="9"
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="25" Height="25"
+										CornerRadius="12.5"
 										Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center"
+                                    <ContentPresenter VerticalAlignment="Center"
 													  HorizontalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </StackPanel>
-            <TextBlock  
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+                <TextBlock  
+                x:Name="tbBig" 
+                Grid.Column="2" 
+                Foreground="White" 
+                HorizontalAlignment="Right"
+                FontSize="35"
+                Margin="0,20,20,0" 
+                Grid.Row="2" 
+                TextWrapping="Wrap" 
+                Text="" 
+                VerticalAlignment="Top" 
+                Height="100" Width="300"
+                TextAlignment="Right"/>
+                <TextBlock  
                 x:Name="textblockTemp" 
                 Grid.Column="2" 
                 Foreground="White" 
                 HorizontalAlignment="Left" 
-                Margin="58,95,0,0" 
+                Margin="108,155,0,0" 
                 Grid.Row="2" 
                 TextWrapping="Wrap" 
                 Text="TextBlock" 
                 VerticalAlignment="Top" 
-                Height="300" Width="332"/>
-            <TextBox 
+                Height="280" Width="300"
+                    />
+                <TextBox
+                CaretBrush="Wheat"
                 Foreground="White"
                 x:Name="textboxCity" 
                 Grid.Column="1" 
@@ -195,22 +183,28 @@
                 TextWrapping="Wrap" 
                 Text="TextBox" 
                 VerticalAlignment="Center" 
-                Width="120" 
+                Width="180" 
+                    Height="35"
+                    FontSize="25"
                 Grid.ColumnSpan="2" 
                 KeyDown="textboxCity_KeyDown"
                 TextAlignment="Center"
+                    BorderThickness="0"
                 >
-                <TextBox.Background>
-                    <ImageBrush x:Name="input"
+                    
+                    <TextBox.Background>
+                        
+                        <ImageBrush x:Name="input"
                                 ImageSource="/Assets/Horizontal_Bar.png"></ImageBrush>
-                </TextBox.Background>
-            </TextBox>
-            <Button x:Name="buttonSubmit"
+                    </TextBox.Background>
+                </TextBox>
+                <Button x:Name="buttonSubmit"
                     Grid.Column="1"
 					Grid.Row="3"
+                    Grid.RowSpan="2"
 					Grid.ColumnSpan="2"
                     BorderThickness="2"
-                    Foreground="White"
+                    Foreground="Black"
                     FontSize="18"
                     FontFamily="Montserrat"
                     Cursor="Hand"
@@ -218,50 +212,51 @@
                     Opacity="1"
                     Content="Aktualisieren"
                     VerticalAlignment="Center"
-                    Margin="0,40,0,0"
+                    Margin="0,34,0,0"
+                       
                     >
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="DarkOliveGreen"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Gold"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="150" Height="40"
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Gold"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Silver"
+/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150" Height="40"
 						CornerRadius="20"
 						Background="{TemplateBinding Background}">
-                            <ContentPresenter   VerticalAlignment="Center"
+                                <ContentPresenter   VerticalAlignment="Center"
 									            HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
 
-            </Button>
-            <TextBlock 
+                </Button>
+                <TextBlock 
                 x:Name="textBlockTest" 
                 Foreground="White" 
                 Grid.Column="2" 
-                HorizontalAlignment="Center" 
+                HorizontalAlignment="Right" 
                 TextWrapping="Wrap" 
                 Text="TextBlock" 
                 VerticalAlignment="Center" 
                 Height="19" 
-                Width="158" 
-                Grid.Row="1"
-                TextAlignment="Center"
+                Width="158"
+                Margin="0,0,20,250"
+                Grid.Row="2"
+                TextAlignment="Right"
                 >
-                <TextBlock.Background>
-                    <ImageBrush x:Name="weather_now"
-                                ImageSource="/Assets/Horizontal_Bar.png"></ImageBrush>
-                </TextBlock.Background>
 
-            </TextBlock>
-            
-        </Grid>
+
+                </TextBlock>
+
+            </Grid>
+        </Border>
     </Border>
 </Window>
