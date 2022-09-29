@@ -1,48 +1,29 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Net.Http;
+﻿using System;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using WeatherApp_Gerlach.WeatherMap;
-
 
 namespace WeatherApp_Gerlach.SupportClasses
 {
     public class Helper
     {
         private static string weather;
+
+        private static string weatherDesc;
+        public static string WeatherDesc { get { return weatherDesc; } }
+
         private static string actualTemp;
         public static string ActualTemp { get { return actualTemp; }  }
-
-
-        public static WeatherMapResponse doRequest(TextBox txt)
-        {
-            HttpClient httpClient = new HttpClient();
-            string requestUri = $"https://api.openweathermap.org/data/2.5/weather?q={txt.Text}&appid=b6ee3ba5f78bd0c33c1bf67c46c95709&lang=de&units=metric";
-            WeatherMapResponse weatherMapResponse = null;
-            try
-            {
-                HttpResponseMessage httpResponse = httpClient.GetAsync(requestUri).Result;
-                string response = httpResponse.Content.ReadAsStringAsync().Result;
-                weatherMapResponse = JsonConvert.DeserializeObject<WeatherMapResponse>(response);
-            }
-            catch (AggregateException e)
-            {
-                MessageBox.Show("Internetverbindung überprüfen");
-            }
-            return weatherMapResponse;
-        }
-
 
         public static StringBuilder printWeatherData(WeatherMapResponse weatherMapResponse, MainWindow main)
         {
             StringBuilder sb = new StringBuilder();
             weather = "";
+            weatherDesc = "";
+            actualTemp = ""; 
             if ((weatherMapResponse != null) && (weatherMapResponse.main != null))
             {
-                sb.Append($"{"Aktuelle Temperatur",-30} :\t {weatherMapResponse.main.temp.ToString("00.00")}  °C\n");
                 sb.Append($"{"Höchsttemperatur",-30} :\t {weatherMapResponse.main.temp_max.ToString("00.00")}  °C\n");
                 sb.Append($"{"Mindesttemperatur",-30}:\t {weatherMapResponse.main.temp_min.ToString("00.00")}  °C\n");
                 sb.Append($"{"Gefühlte Temperatur",-30}:\t {weatherMapResponse.main.feels_like.ToString("00.00")}  °C\n\n");
@@ -51,14 +32,16 @@ namespace WeatherApp_Gerlach.SupportClasses
                 sb.Append($"{"Windgeschwindigkeit",-28}:\t {weatherMapResponse.wind.speed.ToString()} m/s\n\n");
                 sb.Append($"{"Ortschaft",-38}:\t {weatherMapResponse.name.ToString()} \n");
                 sb.Append($"{"Wetterlage",-36}:\t {Helper.translateWeather(weatherMapResponse.weather[0].main.ToString())} \n");
-                sb.Append($"{"Beschreibung",-34}:\t {weatherMapResponse.weather[0].description.ToString()} \n");
 
+                main.LogoLabel.Visibility = Visibility.Visible;
                 actualTemp = weatherMapResponse.main.temp.ToString("00.00") + " °C";
+                weatherDesc = weatherMapResponse.weather[0].description.ToString();
             }
             else
             {
                 MessageBox.Show("Ort nicht gefunden", "Fehler");
-                sb.Append("kein gültiger Ort");               
+                sb.Append("kein gültiger Ort");
+                main.LogoLabel.Visibility = Visibility.Hidden;
             }
             return sb;
         }

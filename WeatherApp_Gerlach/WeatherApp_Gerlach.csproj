@@ -58,13 +58,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="API\Clouds.cs" />
-    <Compile Include="API\Coord.cs" />
     <Compile Include="API\Main.cs" />
     <Compile Include="API\Weather.cs" />
     <Compile Include="API\WeatherMapResponse.cs" />
     <Compile Include="API\Wind.cs" />
     <Compile Include="SupportClasses\Helper.cs" />
+    <Compile Include="SupportClasses\HttpHelper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,15 +113,25 @@
     <Resource Include="Assets\snow.png" />
     <Resource Include="Assets\sun.png" />
     <Resource Include="Assets\thunderstorm.png" />
-    <Resource Include="Assets\verticalBar.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Horizontal_Bar.png" />
     <Resource Include="Assets\moon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\fog.png" />
     <Resource Include="Assets\startup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\frame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\frame2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Horizontal_Bar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
